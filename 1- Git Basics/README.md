@@ -10,12 +10,13 @@ Git also makes collaboration easier, allowing changes by multiple people to all 
 
 ## Initializing a new repository
 
-The `git init` command is used to initialize a new Git repository. When you run this command, Git sets up all the necessary files and directories for version control in the current working directory, creating a new repository.
+To create a new repo, you'll use the `git init` command. `git init` is a one-time command you use during the initial setup of a new repo. Executing this command will create a new `.git` subdirectory in your current working directory. This will also create a new main branch. 
 
+```git
+git init
+```
 
-To summarize, `git init` is a one-time command used to set up a new Git repository in a project directory. It prepares the environment for version control and establishes the initial configuration needed for tracking changes and managing project history.
-
-**
+***
 
 ## The Staging Area & Your First Commit
 
@@ -61,3 +62,13 @@ The staging area in Git is an intermediate step between your working directory a
    This shows a log of all commits, including the one you just made.
 
 These steps demonstrate the basic workflow of using the staging area to prepare and commit changes in Git. The staging area provides a way to organize and structure your commits, allowing you to make clear and meaningful contributions to your project's history.
+
+***
+
+## When to commit
+
+Git works best, and works in your favor, when you commit your work often. Instead of waiting to make the commit perfect, it is better to work in small chunks and keep committing your work. If you are working on a feature branch that could take some time to finish, it helps you keep your code updated with the latest changes so that you avoid conflicts.
+
+Also, Git only takes full responsibility for your data when you commit. 
+
+***
