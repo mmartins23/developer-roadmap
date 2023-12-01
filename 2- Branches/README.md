@@ -7,6 +7,28 @@ You always create a branch from an existing branch. Typically, you might create 
 ![Branches](https://wac-cdn.atlassian.com/dam/jcr:a905ddfd-973a-452a-a4ae-f1dd65430027/01%20Git%20branch.svg?cdnVersion=1340)
 
 
+### Table of Contents
+
+1. [Working with branches](#working-with-branches)
+   - [View Existing Branches](#view-existing-branches)
+   - [Create a New Branch](#create-a-new-branch)
+   - [Switch to a Branch](#switch-to-a-branch)
+   - [Rename a Branch](#rename-a-branch)
+   - [Delete a Branch](#delete-a-branch)
+   - [View Remote Branches](#view-remote-branches)
+   - [View All Branches (Local and Remote)](#view-all-branches-local-and-remote)
+
+2. [Merging Branches](#merging-branches)
+   - [Ensure You Are on the Main Branch](#1-ensure-you-are-on-the-main-branch)
+   - [Pull Latest Changes from Main (Optional)](#2-pull-latest-changes-from-main-optional)
+   - [Initiate the Merge](#3-initiate-the-merge)
+   - [Resolve Merge Conflicts (if any)](#4-resolve-merge-conflicts-if-any)
+   - [Commit the Merge](#5-commit-the-merge)
+   - [Push the Merged Changes (if needed)](#6-push-the-merged-changes-if-needed)
+   - [Review the Merged Changes](#7-review-the-merged-changes)
+   - [Clean Up (Optional)](#8-clean-up-optional)
+
+
 ***
 
 ## Working with branches
