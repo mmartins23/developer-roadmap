@@ -6,6 +6,12 @@ Git also makes collaboration easier, allowing changes by multiple people to all 
 
 ![GIT](https://www.nobledesktop.com/image/blog/git-branches-merge.png)
 
+### Table of Contents
+1. [Initializing a new repository](#initializing-a-new-repository)
+2. [The Staging Area & Your First Commit](#the-staging-area--your-first-commit)
+3. [When to Commit](#when-to-commit)
+4. [Summary](#summary)
+
 ***
 
 ## Initializing a new repository
