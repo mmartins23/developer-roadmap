@@ -97,7 +97,6 @@ These are some of the common use cases for the `git branch` command. Depending o
 
 The process of merging branches in Git follows a typical flow, and it's important to understand the steps involved. Here's a step-by-step flow for merging branches:
 
-Certainly! The steps for merging branches into the `main` branch are similar to those for merging into the `master` branch. Here's a step-by-step flow for merging branches into the `main` branch in Git:
 
 ### 1. **Ensure You Are on the Main Branch:**
    Before merging changes into the `main` branch, make sure you are on the `main` branch. Use the `git checkout` command to switch to the `main` branch.
