@@ -1,3 +1,12 @@
+### Table of Contents
+
+1. [How To Push The Code From VS Code To GitHub](#how-to-push-the-code-from-vs-code-to-github)
+   
+2. [Push and Pull From Remote Repos](#push-and-pull-from-remote-repos)
+
+3. [Closing Features & Updating the Remote Server](#closing-features--updating-the-remote-server)
+ 
+
 # How To Push The Code From VS Code To GitHub
 
 Here's a step-by-step guide to push code from Visual Studio Code to GitHub:
