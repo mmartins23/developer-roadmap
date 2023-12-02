@@ -40,6 +40,8 @@ That's it! Your code should now be pushed to GitHub and you can view it on the G
 
 In Git, pushing and pulling are essential operations for synchronizing changes between a local repository and a remote repository. Let's dive into the details of each:
 
+![Git Push and Pull Commands](https://i.ytimg.com/vi/0nqJKEh3YCc/maxresdefault.jpg)
+
 ### Push:
 **Definition:** Pushing in Git means sending your local commits to a remote repository.
 
@@ -65,8 +67,6 @@ In Git, pushing and pulling are essential operations for synchronizing changes b
 
 ### Pull:
 **Definition:** Pulling in Git means fetching changes from a remote repository and merging them into your local repository.
-
-![Git Push and Pull Commands](https://i.ytimg.com/vi/0nqJKEh3YCc/maxresdefault.jpg)
 
 
 **Use Case:**
