@@ -23,7 +23,7 @@ git clone https://github.com/your-username/learn-git.git
 
 Navigate to the repository directory and explore the documentation to grasp fundamental concepts and workflows:
 
-- [Git Basics](docs/git-basics.md): Learn the essentials of Git, including initialization, committing changes, and viewing history.
+- [Git Basics](https://github.com/mmartins23/developer-roadmap/tree/git-roadmap/1-%20Git%20Basics): Learn the essentials of Git, including initialization, committing changes, and viewing history.
 - [Branching in Git](docs/branching.md): Understand how to work with branches, create new features, and manage different versions of your code.
 - [Collaborating with Git](docs/collaboration.md): Explore how Git facilitates collaboration in a team environment, covering pushing, pulling, and resolving conflicts.
 
