@@ -24,8 +24,8 @@ git clone https://github.com/your-username/learn-git.git
 Navigate to the repository directory and explore the documentation to grasp fundamental concepts and workflows:
 
 - [Git Basics](https://github.com/mmartins23/developer-roadmap/tree/git-roadmap/1-%20Git%20Basics): Learn the essentials of Git, including initialization, committing changes, and viewing history.
-- [Branching in Git](docs/branching.md): Understand how to work with branches, create new features, and manage different versions of your code.
-- [Collaborating with Git](docs/collaboration.md): Explore how Git facilitates collaboration in a team environment, covering pushing, pulling, and resolving conflicts.
+- [Branching in Git](https://github.com/mmartins23/developer-roadmap/tree/git-roadmap/2-%20Branches): Understand how to work with branches, create new features, and manage different versions of your code.
+- [Github Remote Repos](https://github.com/mmartins23/developer-roadmap/tree/git-roadmap/3-%20Github%20Remote%20Repos): Explore how Git facilitates collaboration in a team environment, covering pushing, pulling, and resolving conflicts.
 
 
 ## Contributing
@@ -42,8 +42,8 @@ If you'd like to contribute to this learning repository, feel free to:
 ## Resources
 
 - [Official Git Documentation](https://git-scm.com/doc)
-- [Atlassian Git Tutorial](https://www.atlassian.com/git/tutorials)
-- [GitHub Learning Lab](https://lab.github.com/)
+- [Atlassian Git Tutorial](https://www.atlassian.com/git/tutorials/what-is-git)
+
 
 ## License
 
