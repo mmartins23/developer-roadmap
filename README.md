@@ -1,25 +1,4 @@
-```markdown
-# Learn Git Repository
-
-Welcome to the Learn Git repository! This space is dedicated to helping you understand and master Git, a powerful version control system widely used in software development.
-
-## Getting Started
-
-If you're new to Git, follow these steps to get started:
-
-### 1. Installation
-
-Ensure Git is installed on your machine. Download it from the official Git website: [Git Downloads](https://git-scm.com/downloads)
-
-### 2. Clone this Repository
-
-Clone this repository to your local machine using the following command:
-
-```bash
-git clone https://github.com/your-username/learn-git.git
-```
-
-### 3. Explore the Documentation
+# 1. Explore the Documentation
 
 Navigate to the repository directory and explore the documentation to grasp fundamental concepts and workflows:
 
