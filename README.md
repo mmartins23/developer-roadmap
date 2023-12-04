@@ -1,4 +1,4 @@
-# 1. Explore the Documentation
+# Explore the Documentation
 
 Navigate to the repository directory and explore the documentation to grasp fundamental concepts and workflows:
 
