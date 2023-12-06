@@ -310,3 +310,52 @@ In this example, the `x` and `y` properties are marked as `readonly`, meaning th
 These are basic examples of working with object types in TypeScript. Object types are a powerful feature that allows you to enforce the structure of your objects and catch potential errors during development. They provide a way to define and work with complex data structures in a statically-typed manner.
 
 ***
+
+# Working with Array Types
+
+In TypeScript, array types allow you to define the types of elements within an array. You can specify the type of elements that an array should contain, ensuring type safety during development. Here's an example of working with array types in TypeScript:
+
+### Example: Array Types
+
+```typescript
+// Array of numbers
+let numbers: number[] = [1, 2, 3, 4, 5];
+console.log(numbers); // Output: [1, 2, 3, 4, 5]
+
+// Array of strings
+let fruits: string[] = ["apple", "banana", "orange"];
+console.log(fruits); // Output: ["apple", "banana", "orange"]
+
+// Mixed-type array
+let mixedArray: (string | number)[] = ["apple", 42, "orange", 99];
+console.log(mixedArray); // Output: ["apple", 42, "orange", 99]
+
+// Array using the Array constructor
+let colors: Array<string> = new Array("red", "green", "blue");
+console.log(colors); // Output: ["red", "green", "blue"]
+
+// Readonly array
+let readOnlyNumbers: ReadonlyArray<number> = [1, 2, 3];
+// readOnlyNumbers.push(4); // Error: Property 'push' does not exist on type 'readonly number[]'
+
+// Two-dimensional array
+let matrix: number[][] = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+];
+console.log(matrix); // Output: [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+```
+
+In this example:
+
+- `numbers` is an array that can only contain numbers.
+- `fruits` is an array that can only contain strings.
+- `mixedArray` is an array that can contain both strings and numbers.
+- `colors` is an array created using the `Array` constructor.
+- `readOnlyNumbers` is a readonly array, preventing modification after initialization.
+- `matrix` is a two-dimensional array containing arrays of numbers.
+
+By specifying the types of elements within an array, TypeScript helps catch potential type-related errors during development. Arrays in TypeScript can be used with various types and configurations to suit different scenarios.
+
+***
