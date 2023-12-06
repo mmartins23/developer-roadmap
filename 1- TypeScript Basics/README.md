@@ -1,3 +1,31 @@
+# Table of Contents
+
+- [Working with Types Type Inference Explicit Type Annotations](#working-with-types-type-inference-explicit-type-annotations)
+  - [1. Type Inference](#1-type-inference)
+  - [2. Explicit Type Annotations](#2-explicit-type-annotations)
+  - [Conclusion](#conclusion)
+
+- [Basic Primitive Types](#basic-primitive-types)
+  - [1. Boolean](#1-boolean)
+  - [2. Number](#2-number)
+  - [3. String](#3-string)
+  - [4. Null and Undefined](#4-null-and-undefined)
+  - [5. Void](#5-void)
+  - [6. Any](#6-any)
+  - [7. Never](#7-never)
+
+- [Combining Types Union Types](#combining-types-union-types)
+  - [Example 1: Union Types in Variables](#example-1-union-types-in-variables)
+  - [Example 2: Union Types in Function Parameters](#example-2-union-types-in-function-parameters)
+  - [Example 3: Union Types with Custom Types](#example-3-union-types-with-custom-types)
+
+- [Working with Object Types](#working-with-object-types)
+  - [Example 1: Basic Object Type](#example-1-basic-object-type)
+  - [Example 2: Optional Properties](#example-2-optional-properties)
+  - [Example 3: Readonly Properties](#example-3-readonly-properties)
+
+***
+
 # Working with Types Type Inference Explicit Type Annotations
 
 In TypeScript, working with types involves specifying the data types of variables, parameters, and return values in your code. TypeScript supports both type inference and explicit type annotations to help developers catch errors early and improve code readability.
@@ -201,3 +229,84 @@ console.log(getShapeArea("triangle", 6));  // Area of an equilateral triangle
 In this example, the `Shape` type is a union type consisting of string literal types. The `getShapeArea` function accepts a shape and a size, and it returns the area based on the shape. The `Shape` type restricts the allowed values for the `shape` parameter.
 
 Union types provide a powerful way to express that a value can have more than one type, offering flexibility and type safety in TypeScript. They are commonly used in scenarios where the type of a variable or parameter is not fixed and can vary under certain conditions.
+
+***
+
+# Working with Object Types
+
+In TypeScript, object types allow you to define the shape of an object by specifying the types of its properties. You can also define optional properties, readonly properties, and specify the types of the property values. Here's an example of working with object types in TypeScript:
+
+### Example 1: Basic Object Type
+
+```typescript
+// Define an object type
+type Person = {
+    firstName: string;
+    lastName: string;
+    age: number;
+};
+
+// Create an object with the defined type
+let person: Person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 30,
+};
+
+// Access properties
+console.log(person.firstName); // Output: John
+console.log(person.age);        // Output: 30
+```
+
+In this example, we've defined an object type `Person` with three properties: `firstName`, `lastName`, and `age`. We then create an object of type `Person` with specific values for each property.
+
+### Example 2: Optional Properties
+
+```typescript
+// Define an object type with optional properties
+type Car = {
+    brand: string;
+    model: string;
+    year?: number; // Optional property
+};
+
+// Create objects with optional properties
+let car1: Car = {
+    brand: "Toyota",
+    model: "Camry",
+};
+
+let car2: Car = {
+    brand: "Honda",
+    model: "Civic",
+    year: 2020,
+};
+```
+
+In this example, the `year` property is marked as optional with the `?` syntax. This means you can choose to include or omit the `year` property when creating objects of type `Car`.
+
+### Example 3: Readonly Properties
+
+```typescript
+// Define an object type with readonly properties
+type Point = {
+    readonly x: number;
+    readonly y: number;
+};
+
+// Create an object with readonly properties
+let point: Point = {
+    x: 10,
+    y: 20,
+};
+
+// Attempt to modify a readonly property (will result in a TypeScript error)
+// point.x = 30; // Error: Cannot assign to 'x' because it is a read-only property.
+```
+
+In this example, the `x` and `y` properties are marked as `readonly`, meaning their values cannot be modified after the object is created.
+
+
+These are basic examples of working with object types in TypeScript. Object types are a powerful feature that allows you to enforce the structure of your objects and catch potential errors during development. They provide a way to define and work with complex data structures in a statically-typed manner.
+
+***
