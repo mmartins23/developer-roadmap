@@ -359,3 +359,70 @@ In this example:
 By specifying the types of elements within an array, TypeScript helps catch potential type-related errors during development. Arrays in TypeScript can be used with various types and configurations to suit different scenarios.
 
 ***
+
+# Adding Types to Functions - Parameter & Return Value Types
+
+In TypeScript, you can add types to function parameters and return values to provide clarity and enable the TypeScript compiler to perform static type checking. This helps catch potential errors early in the development process. Here's an example of adding types to function parameters and return values:
+
+```typescript
+// Function with parameter and return type annotations
+function addNumbers(a: number, b: number): number {
+    return a + b;
+}
+
+// Function with no return type annotation (implicitly returns 'void')
+function logMessage(message: string): void {
+    console.log(message);
+}
+
+// Function with complex parameter and return types
+function getUserDetails(id: number): { name: string; age: number } {
+    // Simulating fetching user details from a database
+    const user = {
+        name: "John Doe",
+        age: 30,
+    };
+
+    return user;
+}
+
+// Function with optional parameter
+function greet(name: string, greeting?: string): string {
+    if (greeting) {
+        return `${greeting}, ${name}!`;
+    } else {
+        return `Hello, ${name}!`;
+    }
+}
+
+// Function with default parameter value
+function calculateArea(radius: number = 1): number {
+    return Math.PI * Math.pow(radius, 2);
+}
+
+// Using the functions
+const sum = addNumbers(10, 20); // sum is inferred as a number
+logMessage("Hello, TypeScript!"); // No return value (void)
+
+const userDetails = getUserDetails(123); // userDetails is inferred as { name: string, age: number }
+
+const greetingMessage = greet("Alice"); // greetingMessage is inferred as string
+const personalizedGreeting = greet("Bob", "Good evening"); // personalizedGreeting is inferred as string
+
+const area1 = calculateArea(); // Uses the default radius (1)
+const area2 = calculateArea(5); // Provides a specific radius (5)
+```
+
+In this example:
+
+- The `addNumbers` function takes two parameters of type `number` and returns a value of type `number`.
+- The `logMessage` function takes a parameter of type `string` and returns no value (implicitly `void`).
+- The `getUserDetails` function takes a parameter of type `number` and returns an object with properties `name` (string) and `age` (number).
+- The `greet` function demonstrates an optional parameter (`greeting`). If `greeting` is provided, it returns a personalized greeting; otherwise, it defaults to a standard greeting.
+- The `calculateArea` function has a default parameter (`radius = 1`), allowing the function to be called without providing a value for `radius`.
+
+Adding types to function parameters and return values enhances code readability and helps prevent potential errors by enforcing type constraints. It also provides clear documentation for developers working with the code.
+
+
+***
+
