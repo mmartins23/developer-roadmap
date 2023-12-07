@@ -423,6 +423,42 @@ In this example:
 
 Adding types to function parameters and return values enhances code readability and helps prevent potential errors by enforcing type constraints. It also provides clear documentation for developers working with the code.
 
-
 ***
 
+# Defining Function Types
+
+Let's go through the explanation of defining function types with the provided example:
+
+```typescript
+// Function: Adds two numbers
+function add(a: number, b: number): number {
+  const result = a + b;
+  return result;
+}
+
+// Type: Function type for adding two numbers
+type AddFn = (a: number, b: number) => number;
+
+// Function: Takes two numbers and a function adhering to AddFn type
+function calculate(a: number, b: number, calcFn: AddFn) {
+  // Calls the provided function with the two numbers, but the result is not used
+  calcFn(a, b);
+}
+
+// Call the 'calculate' function with the 'add' function
+calculate(2, 5, add);
+```
+
+Explanation:
+
+1. **`add` Function**: This function takes two parameters `a` and `b`, both of type `number`, and returns their sum as a `number`.
+
+2. **`AddFn` Type**: This type represents a function type that takes two parameters `number` and returns a `number`. It is similar to the signature of the `add` function.
+
+3. **`calculate` Function**: This function takes two numbers `a` and `b`, and a function `calcFn` that adheres to the `AddFn` type. However, the result of calling `calcFn(a, b)` is not used or returned.
+
+4. **Calling `calculate` with `add`**: The `calculate` function is called with the numbers `2` and `5`, and the `add` function. The purpose of this is to demonstrate passing the `add` function to `calculate`.
+
+In TypeScript, defining function types helps establish clear contracts about the expected structure of functions used in your code. In this example, `AddFn` describes the type of functions that take two numbers and return another number, ensuring that the function passed to `calculate` adheres to this format.
+
+***
