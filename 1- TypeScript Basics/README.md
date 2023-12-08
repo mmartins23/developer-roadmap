@@ -561,3 +561,112 @@ const manager: ManagerEmployee = {
 Here, `ManagerEmployee` is a type alias for an intersection type combining properties from `Employee` and `Manager`.
 
 Custom types or type aliases provide a way to create meaningful names for various types in your code, making it more readable and maintainable.
+
+***
+
+# Defining Object Types with Interfaces
+
+Certainly! In TypeScript, you can use interfaces to define object types, allowing you to enforce a specific structure for objects. Here are examples of defining object types with interfaces:
+
+### 1. Basic Object Type with Interface:
+
+```typescript
+// Defining a basic object type with an interface
+interface Person {
+  name: string;
+  age: number;
+}
+
+// Using the defined interface
+const user: Person = {
+  name: "Alice",
+  age: 30,
+};
+```
+
+In this example, the `Person` interface defines an object type with `name` (a string) and `age` (a number) properties. The `user` object adheres to this interface.
+
+### 2. Optional Properties:
+
+```typescript
+// Object type with optional properties using an interface
+interface Car {
+  brand: string;
+  model: string;
+  year?: number; // Optional property
+}
+
+// Objects with optional properties
+const car1: Car = {
+  brand: "Toyota",
+  model: "Camry",
+};
+
+const car2: Car = {
+  brand: "Honda",
+  model: "Civic",
+  year: 2020,
+};
+```
+
+In this example, the `Car` interface includes an optional property `year`, allowing flexibility in object creation.
+
+### 3. Readonly Properties:
+
+```typescript
+// Object type with readonly properties using an interface
+interface Point {
+  readonly x: number;
+  readonly y: number;
+}
+
+// Object with readonly properties
+const point: Point = {
+  x: 10,
+  y: 20,
+};
+
+// Attempting to modify a readonly property (will result in a TypeScript error)
+// point.x = 30; // Error: Cannot assign to 'x' because it is a read-only property.
+```
+
+Here, the `Point` interface includes readonly properties `x` and `y`, ensuring that their values cannot be modified after object creation.
+
+### 4. Extending Interfaces:
+
+```typescript
+// Extending interfaces to create a new one
+interface Shape {
+  color: string;
+}
+
+interface Circle extends Shape {
+  radius: number;
+}
+
+// Object adhering to the extended interface
+const myCircle: Circle = {
+  color: "blue",
+  radius: 5,
+};
+```
+
+In this example, the `Circle` interface extends the `Shape` interface, inheriting the `color` property.
+
+### 5. Function Type in Interface:
+
+```typescript
+// Interface with a function type
+interface Greeter {
+  greet: (name: string) => string;
+}
+
+// Object adhering to the interface with a function property
+const myGreeter: Greeter = {
+  greet: (name) => `Hello, ${name}!`,
+};
+```
+
+Here, the `Greeter` interface defines an object type with a function property `greet`.
+
+These examples showcase how interfaces in TypeScript provide a powerful way to define and enforce the structure of object types, promoting code readability and maintainability.
