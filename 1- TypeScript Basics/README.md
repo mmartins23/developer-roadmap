@@ -670,3 +670,121 @@ const myGreeter: Greeter = {
 Here, the `Greeter` interface defines an object type with a function property `greet`.
 
 These examples showcase how interfaces in TypeScript provide a powerful way to define and enforce the structure of object types, promoting code readability and maintainability.
+
+***
+
+# Interfaces vs Custom Types
+
+In TypeScript, both interfaces and type aliases can be used to define custom types. However, there are some differences between the two. Here's an explanation with code examples:
+
+### Interfaces:
+
+Interfaces are often used for defining object shapes and contracts. They can be extended and implemented, allowing for a more object-oriented approach.
+
+#### Example:
+
+```typescript
+// Interface defining an object shape
+interface Person {
+  name: string;
+  age: number;
+}
+
+// Using the defined interface
+const user: Person = {
+  name: "Alice",
+  age: 30,
+};
+```
+
+#### Extending Interfaces:
+
+```typescript
+// Extending interfaces
+interface Employee extends Person {
+  role: string;
+}
+
+const employee: Employee = {
+  name: "Bob",
+  age: 25,
+  role: "Developer",
+};
+```
+
+### Types:
+
+Type aliases provide a way to name any type. They are often used for creating union types, intersection types, or for simplifying complex types.
+
+#### Example:
+
+```typescript
+// Type alias for a union type
+type Result = string | number;
+
+const value1: Result = "Hello";
+const value2: Result = 42;
+```
+
+#### Intersection Types with Type Aliases:
+
+```typescript
+// Intersection types with type aliases
+type A = { a: number };
+type B = { b: string };
+
+type C = A & B;
+
+const obj: C = { a: 1, b: "two" };
+```
+
+### When to Use Interfaces or Types:
+
+- **Use interfaces when**:
+  - You want to define the shape of an object.
+  - You want to extend or implement an existing type.
+  - You are working with classes and want to define contracts.
+
+- **Use types when**:
+  - You want to create union types, intersection types, or other complex types.
+  - You want to create aliases for primitive types, making your code more expressive.
+
+### Key Differences:
+
+- **Declaration Merging**: Interfaces support declaration merging, meaning you can extend them multiple times to add more properties. Types do not support declaration merging.
+
+```typescript
+// Interface with declaration merging
+interface Car {
+  brand: string;
+}
+
+interface Car {
+  model: string;
+}
+
+const myCar: Car = { brand: "Toyota", model: "Camry" };
+```
+
+- **Implements and Extends**: Interfaces can be implemented by classes, and they can extend other interfaces. Types cannot be implemented or extended.
+
+```typescript
+// Interface with extends
+interface Animal {
+  sound(): void;
+}
+
+interface Dog extends Animal {
+  bark(): void;
+}
+
+// Error: 'type' cannot be used here
+type AnimalType = {
+  sound(): void;
+};
+```
+
+In summary, both interfaces and types have their use cases, and the choice between them often depends on the specific requirements of your code. Use interfaces for defining object shapes and contracts, and use types for creating more complex type compositions.
+
+
+***
