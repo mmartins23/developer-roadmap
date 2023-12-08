@@ -462,3 +462,102 @@ Explanation:
 In TypeScript, defining function types helps establish clear contracts about the expected structure of functions used in your code. In this example, `AddFn` describes the type of functions that take two numbers and return another number, ensuring that the function passed to `calculate` adheres to this format.
 
 ***
+
+# Creating Custom Types / Type Aliases
+
+Let's explore creating custom types or type aliases in TypeScript with various code examples.
+
+### 1. Basic Type Aliases:
+
+```typescript
+// Custom type aliases for basic types
+type Age = number;
+type Name = string;
+
+const userAge: Age = 25;
+const userName: Name = "John";
+```
+
+In this example, `Age` and `Name` are custom type aliases representing `number` and `string` types, respectively.
+
+### 2. Union Types with Type Aliases:
+
+```typescript
+// Custom type alias for a union type
+type Result = string | number;
+
+const value1: Result = "Hello";
+const value2: Result = 42;
+```
+
+Here, `Result` is a type alias for a union type that can hold either a `string` or a `number`.
+
+### 3. Object Type with Type Aliases:
+
+```typescript
+// Custom type alias for an object type
+type Person = {
+  name: string;
+  age: number;
+};
+
+const user: Person = {
+  name: "Alice",
+  age: 30,
+};
+```
+
+In this example, `Person` is a type alias representing an object type with `name` (a string) and `age` (a number) properties.
+
+### 4. Function Type with Type Aliases:
+
+```typescript
+// Custom type alias for a function type
+type MathOperation = (a: number, b: number) => number;
+
+const add: MathOperation = (a, b) => a + b;
+const subtract: MathOperation = (a, b) => a - b;
+```
+
+Here, `MathOperation` is a type alias for a function that takes two numbers and returns a number.
+
+### 5. Generic Type Aliases:
+
+```typescript
+// Generic type alias
+type Pair<T> = {
+  first: T;
+  second: T;
+};
+
+const numberPair: Pair<number> = { first: 1, second: 2 };
+const stringPair: Pair<string> = { first: "one", second: "two" };
+```
+
+In this example, `Pair` is a generic type alias that can be used with different types.
+
+### 6. Intersection Types with Type Aliases:
+
+```typescript
+// Custom type aliases for intersection types
+type Employee = {
+  name: string;
+  role: string;
+};
+
+type Manager = {
+  meetings: number;
+};
+
+type ManagerEmployee = Employee & Manager;
+
+const manager: ManagerEmployee = {
+  name: "John",
+  role: "Manager",
+  meetings: 3,
+};
+```
+
+Here, `ManagerEmployee` is a type alias for an intersection type combining properties from `Employee` and `Manager`.
+
+Custom types or type aliases provide a way to create meaningful names for various types in your code, making it more readable and maintainable.
