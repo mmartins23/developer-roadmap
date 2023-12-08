@@ -786,5 +786,76 @@ type AnimalType = {
 
 In summary, both interfaces and types have their use cases, and the choice between them often depends on the specific requirements of your code. Use interfaces for defining object shapes and contracts, and use types for creating more complex type compositions.
 
+***
+
+# Merging Types
+
+Combining types in TypeScript can be done using the `&` (intersection) operator to create a new type that includes properties from multiple types. Let's explore this with examples using both interfaces and type aliases:
+
+### Combining Interfaces with `&`:
+
+```typescript
+// First interface declaration
+interface Person {
+  name: string;
+  age: number;
+}
+
+// Second interface declaration with the same name
+interface Employee {
+  role: string;
+  salary: number;
+}
+
+// Combined interface using '&'
+interface EmployeeDetails extends Person, Employee {
+  // Combining properties from both interfaces
+}
+
+// Using the combined interface
+const myDetails: EmployeeDetails = {
+  name: "Alice",
+  age: 30,
+  role: "Developer",
+  salary: 60000,
+};
+```
+
+In this example, the `EmployeeDetails` interface is created by combining the properties of both `Person` and `Employee` using the `&` operator.
+
+### Combining Type Aliases with `&`:
+
+```typescript
+// First type alias declaration
+type Point2D = {
+  x: number;
+  y: number;
+};
+
+// Second type alias declaration with the same name
+type Point2D = {
+  z: number;
+};
+
+// Error: Duplicate identifier 'Point2D'.
+```
+
+Type aliases do not support merging, so attempting to declare a type alias with the same name more than once will result in an error.
+
+However, you can achieve a similar effect with `&` directly in the type alias:
+
+```typescript
+// Type alias with '&'
+type Point3D = Point2D & {
+  z: number;
+};
+
+// Using the type alias
+const point3D: Point3D = { x: 1, y: 2, z: 3 };
+```
+
+In this case, the `Point3D` type alias is created by intersecting `Point2D` with an object containing a `z` property.
+
+These examples illustrate how combining types using `&` allows you to create more complex types by merging properties from different sources, whether they are interfaces or type aliases.
 
 ***
