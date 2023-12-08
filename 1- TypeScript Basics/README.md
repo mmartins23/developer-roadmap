@@ -859,3 +859,61 @@ In this case, the `Point3D` type alias is created by intersecting `Point2D` with
 These examples illustrate how combining types using `&` allows you to create more complex types by merging properties from different sources, whether they are interfaces or type aliases.
 
 ***
+
+# Being Specific With Literal Types
+
+In TypeScript, literal types allow you to be very specific about the exact values that a variable can hold. Literal types are types that represent exactly one value. Here's an explanation with code examples:
+
+### String Literal Types:
+
+```typescript
+// String literal type
+let status: "success" | "error";
+
+status = "success"; // Valid
+// status = "warning"; // Error: Type '"warning"' is not assignable to type '"success" | "error"'.
+```
+
+In this example, `status` can only be assigned the values `"success"` or `"error"`. Any other string value will result in a TypeScript error.
+
+### Numeric Literal Types:
+
+```typescript
+// Numeric literal type
+let speed: 50 | 100;
+
+speed = 50; // Valid
+// speed = 75; // Error: Type '75' is not assignable to type '50 | 100'.
+```
+
+Here, `speed` can only be assigned the values `50` or `100`. Attempting to assign any other numeric value will result in an error.
+
+### Boolean Literal Types:
+
+```typescript
+// Boolean literal type
+let hasPermission: true | false;
+
+hasPermission = true; // Valid
+// hasPermission = 0; // Error: Type '0' is not assignable to type 'true | false'.
+```
+
+In this case, `hasPermission` can only be `true` or `false`. Assigning any other boolean value will cause a TypeScript error.
+
+### Combining Literal Types:
+
+You can also combine literal types to create more specific combinations:
+
+```typescript
+// Combining literal types
+let result: "success" | "error" | "loading";
+
+result = "success"; // Valid
+// result = "timeout"; // Error: Type '"timeout"' is not assignable to type '"success" | "error" | "loading"'.
+```
+
+Here, `result` can be `"success"`, `"error"`, or `"loading"`. Any other string value will result in a TypeScript error.
+
+Literal types provide a powerful way to express and enforce specific values for variables, making your code more robust and self-documenting. They are particularly useful in scenarios where you want to be explicit about the expected values.
+
+***
