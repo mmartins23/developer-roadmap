@@ -917,3 +917,58 @@ Here, `result` can be `"success"`, `"error"`, or `"loading"`. Any other string v
 Literal types provide a powerful way to express and enforce specific values for variables, making your code more robust and self-documenting. They are particularly useful in scenarios where you want to be explicit about the expected values.
 
 ***
+
+# Adding Type Guards
+
+Type guards in TypeScript are conditions that narrow down the type of a variable within a certain block of code. They help TypeScript infer more specific types based on certain conditions. In your provided code example, there's a type `Role` defined as a string literal type, and a function `performAction` with a type guard.
+
+Let's break it down:
+
+```typescript
+// Define a string literal type 'Role'
+type Role = 'admin' | 'user' | 'editor';
+
+// Declare a variable 'role' with type 'Role'
+let role: Role;
+
+// Assign valid values to 'role'
+role = 'admin';
+role = 'user';
+role = 'editor';
+// Uncommenting the line below would result in a TypeScript error
+// role = 'abc';
+
+// Define a function 'performAction' with parameters 'action' and 'role'
+function performAction(action: string | number, role: Role) {
+  // Use a type guard to narrow down the type based on 'role'
+  if (role === 'admin' && typeof action === 'string') {
+    // Within this block, TypeScript knows that 'action' is a string
+    // and 'role' is 'admin'
+    console.log(`Performing admin action: ${action}`);
+  } else {
+    // In this branch, TypeScript knows that 'role' is not 'admin'
+    // or 'action' is not a string
+    console.log(`Invalid action for role ${role}`);
+  }
+}
+
+// Examples of calling 'performAction'
+performAction('edit', 'admin');    // Output: Performing admin action: edit
+performAction(42, 'user');          // Output: Invalid action for role user
+```
+
+Explanation:
+
+1. **Type Definition (`Role`)**: The type `Role` is defined as a string literal type that can only have the values 'admin', 'user', or 'editor'. This ensures that the `role` variable can only be assigned these specific values.
+
+2. **Variable Declaration (`role`)**: The variable `role` is declared with the type `Role`, indicating that it can only hold values from the 'admin', 'user', or 'editor' set.
+
+3. **Function (`performAction`)**: The function `performAction` takes two parameters: `action` (which can be a string or a number) and `role` (which must be of type `Role`).
+
+4. **Type Guard in Function**: Within the function, there's a type guard condition `role === 'admin' && typeof action === 'string'`. This condition checks if the role is 'admin' and if the type of action is a string. Inside the if block, TypeScript knows that `action` is a string and `role` is 'admin'.
+
+5. **Usage Examples**: The function is then called with different arguments, demonstrating how the type guard affects TypeScript's ability to infer more specific types within the function body.
+
+The use of type guards allows TypeScript to provide more accurate type information within specific code blocks, enhancing type safety in your application.
+
+***
