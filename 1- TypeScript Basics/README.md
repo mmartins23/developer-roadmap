@@ -24,6 +24,54 @@
   - [Example 2: Optional Properties](#example-2-optional-properties)
   - [Example 3: Readonly Properties](#example-3-readonly-properties)
 
+- [Working with Array Types](#working-with-array-types)
+  - [Example: Array Types](#example-array-types)
+
+- [Adding Types to Functions - Parameter & Return Value Types](#adding-types-to-functions---parameter--return-value-types)
+  - [Function with parameter and return type annotations](#function-with-parameter-and-return-type-annotations)
+  - [Function with no return type annotation (implicitly returns 'void')](#function-with-no-return-type-annotation-implicitly-returns-void)
+  - [Function with complex parameter and return types](#function-with-complex-parameter-and-return-types)
+  - [Function with optional parameter](#function-with-optional-parameter)
+  - [Function with default parameter value](#function-with-default-parameter-value)
+  
+- [Defining Function Types](#defining-function-types)
+  - [Function: Adds two numbers](#function-adds-two-numbers)
+  - [Type: Function type for adding two numbers](#type-function-type-for-adding-two-numbers)
+  - [Function: Takes two numbers and a function adhering to AddFn type](#function-takes-two-numbers-and-a-function-adhering-to-addfn-type)
+
+- [Creating Custom Types / Type Aliases](#creating-custom-types--type-aliases)
+  - [Basic Type Aliases](#basic-type-aliases)
+  - [Union Types with Type Aliases](#union-types-with-type-aliases)
+  - [Object Type with Type Aliases](#object-type-with-type-aliases)
+  - [Function Type with Type Aliases](#function-type-with-type-aliases)
+  - [Generic Type Aliases](#generic-type-aliases)
+  - [Intersection Types with Type Aliases](#intersection-types-with-type-aliases)
+
+- [Defining Object Types with Interfaces](#defining-object-types-with-interfaces)
+  - [Basic Object Type with Interface](#basic-object-type-with-interface)
+  - [Optional Properties](#optional-properties)
+  - [Readonly Properties](#readonly-properties)
+  - [Extending Interfaces](#extending-interfaces)
+  - [Function Type in Interface](#function-type-in-interface)
+
+- [Interfaces vs Custom Types](#interfaces-vs-custom-types)
+  - [Declaration Merging](#declaration-merging)
+  - [Implements and Extends](#implements-and-extends)
+  - [When to Use Interfaces or Types](#when-to-use-interfaces-or-types)
+  - [Key Differences](#key-differences)
+
+- [Merging Types](#merging-types)
+  - [Combining Interfaces with `&`](#combining-interfaces-with-)
+  - [Combining Type Aliases with `&`](#combining-type-aliases-with-)
+
+- [Being Specific With Literal Types](#being-specific-with-literal-types)
+  - [String Literal Types](#string-literal-types)
+  - [Numeric Literal Types](#numeric-literal-types)
+  - [Boolean Literal Types](#boolean-literal-types)
+  - [Combining Literal Types](#combining-literal-types)
+
+- [Adding Type Guards](#adding-type-guards)
+
 ***
 
 # Working with Types Type Inference Explicit Type Annotations
