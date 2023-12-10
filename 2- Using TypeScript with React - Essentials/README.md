@@ -261,3 +261,80 @@ Here's how the `App` component uses the `CourseGoal` component:
 By using the `children` prop and the `ReactNode` type, you create versatile components that can adapt to various content structures, promoting code reusability and readability.
 
 ***
+
+# Creating a Header Component
+
+### Exercise: Creating a Header Component
+
+In this exercise, you're creating a `Header` component that accepts an image and children as props. The `App` component then uses this `Header` component along with the previously defined `CourseGoal` component.
+
+### Code Explanation:
+
+#### `Header` Component:
+
+```tsx
+// components/Header.tsx
+import { ReactNode } from "react";
+
+type HeaderProps = {
+    image: {
+        src: string;
+        alt: string;
+    };
+    children: ReactNode;
+};
+
+export default function Header({ image, children }: HeaderProps) {
+    return (
+        <header>
+            <img src={image.src} alt={image.alt} />
+            {children}
+        </header>
+    );
+}
+```
+
+- `HeaderProps` is a type that defines the expected props for the `Header` component. It includes an `image` prop, which is an object with `src` and `alt` properties, and a `children` prop of type `ReactNode`.
+
+- The `Header` component takes in the `image` and `children` props and renders an `<img>` element with the specified image source and alt text, followed by the `children` content.
+
+#### `App` Component:
+
+```tsx
+// App.tsx
+import CourseGoal from "./components/CourseGoal";
+import Header from "./components/Header";
+import goalsImg from './assets/goals.jpg'
+
+export default function App() {
+    return (
+        <main>
+            <Header image={{ src: goalsImg, alt: 'A List of goals' }}>
+                <h1>Your Course Goals</h1>
+            </Header>
+            <CourseGoal
+                title="Learning React + TS">
+                <p>Learning it from the ground up</p>
+            </CourseGoal>
+        </main>
+    );
+}
+```
+
+- The `App` component imports the `CourseGoal` and `Header` components.
+
+- It also imports an image (`goalsImg`) from the `./assets/goals.jpg` path, which is used as the source for the image in the `Header` component.
+
+- Inside the `return` statement, there's a `Header` component with an image prop and a nested `<h1>` element as children. This represents a header with an image and a title.
+
+- Below the `Header`, there's a `CourseGoal` component with a title prop and nested `<p>` element as children, representing a course goal.
+
+### Summary:
+
+- The `Header` component is a reusable component that encapsulates a header structure with an image and arbitrary children.
+
+- The `App` component demonstrates how to use the `Header` component along with other components, showcasing the composability of React components.
+
+- This exercise promotes code organization, reusability, and the use of TypeScript to define clear prop types for better development practices.
+
+***
