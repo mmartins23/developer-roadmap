@@ -131,7 +131,6 @@ Here's how the `App` component uses the `CourseGoal` component:
 
 In summary, TypeScript's ability to define and enforce prop types enhances the development experience by catching errors early, improving code documentation, and making the codebase more robust. It's a valuable feature, especially in larger projects where type safety is crucial.
 
-
 ***
 
 # Storing Props Types as a Custom Type or Interface
@@ -191,5 +190,74 @@ Here's how the `App` component uses the `CourseGoal` component:
 - **Maintainability:** If you need to update the prop types, you can do it in one place (the interface) rather than updating each component individually.
 
 By using interfaces or custom types for prop definitions, you leverage TypeScript's static typing capabilities to catch errors at compile-time, leading to more robust and maintainable React code.
+
+***
+
+# Defining a Type for Props with "children"
+
+Defining a type for props that include a "children" prop is common in React components. This allows components to accept and render arbitrary content passed between their opening and closing tags. Here's an explanation of the code you provided:
+
+
+```tsx
+import { ReactNode } from "react";
+
+interface CourseGoalProps {
+    title: string;
+    children: ReactNode;
+}
+
+export default function CourseGoal({ title, children }: CourseGoalProps) {
+    return (
+        <article>
+            <div>
+                <h2>{title}</h2>
+                {children}
+            </div>
+            <button>DELETE</button>
+        </article>
+    )
+}
+```
+
+In this code:
+
+- `ReactNode` is imported from the "react" library. It's a type that represents any node that could be rendered in a React application, including strings, numbers, elements, or fragments.
+
+- The `CourseGoalProps` interface defines the expected props for the `CourseGoal` component. It includes a `title` prop of type string and a `children` prop of type `ReactNode`.
+
+### Using the Component:
+
+```tsx
+import CourseGoal from "./components/CourseGoal";
+
+export default function App() {
+  return (
+    <main>
+      <CourseGoal
+        title="Learning React + TS">
+        <p>Learning it from the ground up</p>
+      </CourseGoal>
+    </main>
+  );
+}
+```
+
+Here's how the `App` component uses the `CourseGoal` component:
+
+- The `CourseGoal` component is imported into the `App` component.
+
+- When using `CourseGoal`, it provides values for the `title` prop ("Learning React + TS") and includes arbitrary content (a `<p>` element) as the `children` prop.
+
+### Explanation:
+
+- **`ReactNode` Type:** By using `ReactNode` for the `children` prop, the `CourseGoal` component can accept and render any valid React content, such as text, elements, or even other components.
+
+- **Flexibility:** Defining a `children` prop allows the component to be more flexible, as it can accept and render different types of content depending on how it's used.
+
+- **Composition:** This pattern enables component composition, allowing developers to nest components and build complex UI structures while maintaining type safety.
+
+- **Readability:** The use of `children` makes the code more readable, as it clearly indicates that the component can accept and render nested content.
+
+By using the `children` prop and the `ReactNode` type, you create versatile components that can adapt to various content structures, promoting code reusability and readability.
 
 ***
