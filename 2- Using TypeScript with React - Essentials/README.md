@@ -130,3 +130,66 @@ Here's how the `App` component uses the `CourseGoal` component:
 - This practice prevents runtime errors and makes the codebase more maintainable.
 
 In summary, TypeScript's ability to define and enforce prop types enhances the development experience by catching errors early, improving code documentation, and making the codebase more robust. It's a valuable feature, especially in larger projects where type safety is crucial.
+
+
+***
+
+# Storing Props Types as a Custom Type or Interface
+
+Storing prop types as a custom type or interface in TypeScript is a common practice in React development. This approach allows you to define a reusable type that represents the shape of the props a component expects. Let's break down the code you provided:
+
+### Defining Props Types with Interface:
+
+```tsx
+interface CourseGoalProps {
+  title: string;
+  description: string;
+}
+
+export default function CourseGoal({ title, description }: CourseGoalProps) {
+  // Component implementation
+}
+```
+
+In this code:
+
+- `CourseGoalProps` is an interface that specifies the shape of the props for the `CourseGoal` component.
+- The interface has two properties: `title` and `description`, both of type string.
+- The `CourseGoal` component uses the `CourseGoalProps` interface to define the types of its props.
+
+### Using the Component:
+
+```tsx
+import CourseGoal from "./components/CourseGoal";
+
+export default function App() {
+  return (
+    <main>
+      <CourseGoal 
+        title="Learning React + TS" 
+        description="Learning it from the ground up"
+      />
+    </main>
+  );
+}
+```
+
+Here's how the `App` component uses the `CourseGoal` component:
+
+- The `CourseGoal` component is imported into the `App` component.
+- When using `CourseGoal`, it provides values for the `title` and `description` props.
+- TypeScript ensures that the provided props match the shape defined by the `CourseGoalProps` interface.
+
+### Explanation:
+
+- **Reusability:** Storing props types as an interface promotes code reusability. If other components share the same prop types, you can simply import the interface and reuse it.
+
+- **Readability:** Using a named interface improves code readability. The name `CourseGoalProps` provides clear information about the purpose of these props.
+
+- **Type Inference:** TypeScript will infer the types automatically when you use the interface. This reduces redundancy and makes the code more concise.
+
+- **Maintainability:** If you need to update the prop types, you can do it in one place (the interface) rather than updating each component individually.
+
+By using interfaces or custom types for prop definitions, you leverage TypeScript's static typing capabilities to catch errors at compile-time, leading to more robust and maintainable React code.
+
+***
