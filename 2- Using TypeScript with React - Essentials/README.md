@@ -338,3 +338,95 @@ export default function App() {
 - This exercise promotes code organization, reusability, and the use of TypeScript to define clear prop types for better development practices.
 
 ***
+
+# Using useState() and TypeScript
+
+The `useState` hook in React is used to add state to functional components. When working with TypeScript, you can provide type annotations for the state variable to enhance type safety. Let's break down the code you provided:
+
+#### Code Explanation:
+
+```tsx
+import { useState } from "react";
+import CourseGoal from "./components/CourseGoal";
+import Header from "./components/Header";
+import goalsImg from './assets/goals.jpg'
+
+type CourseGoal = {
+  title: string;
+  description: string;
+  id: number;
+}
+
+export default function App() {
+  // State variable: goals (array of CourseGoal objects) and setGoals (function to update the state)
+  const [goals, setGoals] = useState<CourseGoal[]>([]);
+
+  // Function to handle adding a new goal to the state
+  function handleAddGoal() {
+    setGoals(prevGoals => {
+      const newGoal: CourseGoal = {
+        id: Math.random(),
+        title: 'Learn React + TS',
+        description: 'Learn it in depth!'
+      };
+      return [...prevGoals, newGoal];
+    });
+  }
+
+  return (
+    <main>
+      {/* Header component with an image and title */}
+      <Header image={{ src: goalsImg, alt: 'A List of goals' }}>
+        <h1>Your Course Goals</h1>
+      </Header>
+
+      {/* Button to trigger adding a new goal */}
+      <button onClick={handleAddGoal}>Add Goal</button>
+
+      {/* List of goals rendered using the map method */}
+      <ul>
+        {goals.map((goal) => (
+          <li key={goal.id}>
+            <CourseGoal title={goal.title}>
+              <p>{goal.description}</p>
+            </CourseGoal>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+}
+```
+
+#### Breakdown:
+
+1. **Importing `useState`:**
+   - The `useState` hook is imported from the React library.
+
+2. **Defining `CourseGoal` Type:**
+   - The `CourseGoal` type is defined to represent the shape of each goal object. It includes properties such as `title`, `description`, and `id`.
+
+3. **Using `useState` for Goals State:**
+   - The `useState` hook is used to declare a state variable named `goals`. It is initialized as an empty array of `CourseGoal` objects.
+   - `setGoals` is a function used to update the state.
+
+4. **`handleAddGoal` Function:**
+   - The `handleAddGoal` function is called when the "Add Goal" button is clicked.
+   - It uses the functional form of `setGoals` to update the state based on the previous state.
+   - It generates a new `CourseGoal` object with a random `id`, a static `title`, and a static `description`.
+   - The new goal is added to the array of goals, and the state is updated.
+
+5. **Rendering Components:**
+   - The `Header` component is rendered with an image and a title.
+   - A "Add Goal" button is rendered, and when clicked, it triggers the `handleAddGoal` function to add a new goal to the state.
+   - A list of goals is rendered using the `goals.map` method, where each goal is rendered as a `CourseGoal` component.
+
+### Note:
+
+- The `key` attribute is used in the `<li>` element to help React efficiently update the DOM when the list of goals changes.
+
+- The `handleAddGoal` function correctly uses the functional form of `setGoals` to ensure that the state is updated based on the previous state, preventing race conditions in asynchronous updates.
+
+This code demonstrates a simple React application with a dynamic list of goals that can be added by clicking a button. TypeScript is used to define the types of the state and props, providing better type safety during development.
+
+***
