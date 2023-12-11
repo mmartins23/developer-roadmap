@@ -430,3 +430,96 @@ export default function App() {
 This code demonstrates a simple React application with a dynamic list of goals that can be added by clicking a button. TypeScript is used to define the types of the state and props, providing better type safety during development.
 
 ***
+
+# Reusing Types Across Files
+
+Reusing types across files is a common practice in TypeScript, especially in larger projects where types may be shared among multiple components or modules. This allows for consistency, maintainability, and easier collaboration among developers. Let's break down the code you provided to see how types are reused:
+
+#### Code Explanation:
+
+##### `App.tsx`:
+
+```tsx
+import { useState } from "react";
+import CourseGoal from "./components/CourseGoal";
+import Header from "./components/Header";
+import goalsImg from './assets/goals.jpg';
+import CourseGoalList from "./components/CourseGoalList";
+
+export type CourseGoal = {
+  title: string;
+  description: string;
+  id: number;
+};
+
+export default function App() {
+  const [goals, setGoals] = useState<CourseGoal[]>([]);
+
+  function handleAddGoal() {
+    setGoals(prevGoals => {
+      const newGoal: CourseGoal = {
+        id: Math.random(),
+        title: 'Learn React + TS',
+        description: 'Learn it in depth!'
+      };
+      return [...prevGoals, newGoal];
+    });
+  }
+
+  return (
+    <main>
+      <Header image={{ src: goalsImg, alt: 'A List of goals' }}>
+        <h1>Your Course Goals</h1>
+      </Header>
+      <button onClick={handleAddGoal}>Add Goal</button>
+      <CourseGoalList goals={goals} />
+    </main>
+  );
+}
+```
+
+- In `App.tsx`, the `CourseGoal` type is defined at the top of the file using `export type`. This makes the `CourseGoal` type accessible outside of the file.
+
+- The `CourseGoal` type is then used in the state declaration and the `handleAddGoal` function.
+
+- The `CourseGoalList` component is imported and used with the `goals` prop.
+
+##### `CourseGoalList.tsx`:
+
+```tsx
+import CourseGoal from "./CourseGoal";
+import { CourseGoal as CGoal } from '../App';
+
+type CourseGoalListProps = {
+  goals: CGoal[];
+};
+
+export default function CourseGoalList({ goals }: CourseGoalListProps) {
+  return (
+    <ul>
+      {goals.map((goal) => (
+        <li key={goal.id}>
+          <CourseGoal title={goal.title}>
+            <p>{goal.description}</p>
+          </CourseGoal>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+- In `CourseGoalList.tsx`, the `CourseGoal` type is imported using `import { CourseGoal as CGoal } from '../App';`. This allows the usage of the `CourseGoal` type within this file with the alias `CGoal`.
+
+- The `CourseGoalList` component takes a `goals` prop with the type `CGoal[]`, which is an array of `CourseGoal` objects.
+
+### Summary:
+
+- Types are defined in one file (`App.tsx`) and exported using `export type` to make them available for reuse in other files.
+
+- In the file where the type is reused (`CourseGoalList.tsx`), it is imported using `import { TypeAlias as AliasName } from 'filePath';`, and the imported type can be used locally with an alias if needed.
+
+- Reusing types in this manner helps maintain consistency in the project, reduces redundancy, and makes it easier to understand and collaborate on code.
+
+
+***
