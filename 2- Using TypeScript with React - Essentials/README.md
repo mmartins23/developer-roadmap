@@ -521,5 +521,133 @@ export default function CourseGoalList({ goals }: CourseGoalListProps) {
 
 - Reusing types in this manner helps maintain consistency in the project, reduces redundancy, and makes it easier to understand and collaborate on code.
 
+***
+
+# Passing Functions as Values - In A Type-Safe Way
+
+Passing functions as values, especially in the context of React, allows child components to communicate with their parent components. TypeScript can be used to ensure type safety when passing functions as props between components. Let's break down the code you provided:
+
+#### Code Explanation:
+
+##### `App.tsx`:
+
+```tsx
+import { useState } from "react";
+import CourseGoal from "./components/CourseGoal";
+import Header from "./components/Header";
+import goalsImg from './assets/goals.jpg'
+import CourseGoalList from "./components/CourseGoalList";
+
+export type CourseGoal = {
+  title: string;
+  description: string;
+  id: number;
+};
+
+export default function App() {
+  const [goals, setGoals] = useState<CourseGoal[]>([]);
+
+  function handleAddGoal() {
+    setGoals(prevGoals => {
+      const newGoal: CourseGoal = {
+        id: Math.random(),
+        title: 'Learn React + TS',
+        description: 'Learn it in depth!'
+      };
+      return [...prevGoals, newGoal];
+    });
+  }
+
+  function handleDeleteGoal(id: number) {
+    setGoals(prevGoals => prevGoals.filter(goal => goal.id !== id));
+  }
+
+  return (
+    <main>
+      <Header image={{ src: goalsImg, alt: 'A List of goals' }}>
+        <h1>Your Course Goals</h1>
+      </Header>
+      <button onClick={handleAddGoal}>Add Goal</button>
+      <CourseGoalList goals={goals} onDelete={handleDeleteGoal} />
+    </main>
+  );
+}
+```
+
+- In `App.tsx`, the `handleAddGoal` function is responsible for adding a new goal to the state.
+
+- The `handleDeleteGoal` function is responsible for deleting a goal based on its `id`.
+
+- The `CourseGoalList` component is rendered and receives the `onDelete` prop, which is the `handleDeleteGoal` function.
+
+##### `CourseGoal.tsx`:
+
+```tsx
+import { type ReactNode } from "react";
+
+interface CourseGoalProps {
+    id: number;
+    title: string;
+    children: ReactNode;
+    onDelete: (id: number) => void;
+}
+
+export default function CourseGoal({ id, title, children, onDelete }: CourseGoalProps
+) {
+    return (
+        <article>
+            <div>
+                <h2>{title}</h2>
+                {children}
+            </div>
+            <button onClick={() => onDelete(id)}>Delete</button>
+        </article>
+    );
+}
+```
+
+- In `CourseGoal.tsx`, the `onDelete` prop is of type `(id: number) => void`, indicating that it's a function that takes an `id` parameter and returns `void` (no return value).
+
+- When the "Delete" button is clicked, the `onDelete` function is called with the current goal's `id`.
+
+##### `CourseGoalList.tsx`:
+
+```tsx
+import CourseGoal from "./CourseGoal";
+import { type CourseGoal as CGoal } from '../App';
+
+type CourseGoalListProps = {
+    goals: CGoal[];
+    onDelete: (id: number) => void;
+}
+
+export default function CourseGoalList({ goals, onDelete }: CourseGoalListProps) {
+    return (
+        <ul>
+            {goals.map((goal) => (
+                <li key={goal.id}>
+                    <CourseGoal id={goal.id} title={goal.title} onDelete={onDelete}>
+                        <p>{goal.description}</p>
+                    </CourseGoal>
+                </li>
+            ))}
+        </ul>
+    );
+}
+```
+
+- In `CourseGoalList.tsx`, the `onDelete` prop is passed down to each `CourseGoal` component.
+
+- When a specific `CourseGoal` component needs to be deleted, the `onDelete` function is triggered, providing the `id` of the goal to be deleted.
+
+### Summary:
+
+- TypeScript ensures type safety when passing functions as props by explicitly defining the function types.
+
+- In this example, the `onDelete` function is defined with a specific signature `(id: number) => void`.
+
+- The `CourseGoalList` component receives the `onDelete` function as a prop and passes it down to each `CourseGoal` component.
+
+- This pattern facilitates communication between parent and child components in a type-safe manner.
 
 ***
