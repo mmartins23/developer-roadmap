@@ -651,3 +651,110 @@ export default function CourseGoalList({ goals, onDelete }: CourseGoalListProps)
 - This pattern facilitates communication between parent and child components in a type-safe manner.
 
 ***
+
+# Handling & Typing Events
+
+Handling and typing events in React involves defining event handlers and ensuring that the types of the events are correctly specified. TypeScript provides support for typing events, which helps catch potential issues and provides better tooling for developers. Let's break down the code you provided:
+
+#### Code Explanation:
+
+##### `App.tsx`:
+
+```tsx
+import { useState } from "react";
+import CourseGoal from "./components/CourseGoal";
+import Header from "./components/Header";
+import goalsImg from './assets/goals.jpg'
+import CourseGoalList from "./components/CourseGoalList";
+import NewGoal from "./components/NewGoal";
+
+export type CourseGoal = {
+  title: string;
+  description: string;
+  id: number;
+};
+
+export default function App() {
+  const [goals, setGoals] = useState<CourseGoal[]>([]);
+
+  function handleAddGoal() {
+    setGoals(prevGoals => {
+      const newGoal: CourseGoal = {
+        id: Math.random(),
+        title: 'Learn React + TS',
+        description: 'Learn it in depth!'
+      };
+      return [...prevGoals, newGoal]
+    });
+  }
+
+  function handleDeleteGoal(id: number) {
+    setGoals(prevGoals => prevGoals.filter(goal => goal.id !== id))
+  }
+
+  return (
+    <main>
+      <Header image={{ src: goalsImg, alt: 'A List of goals' }}>
+        <h1>Your Course Goals</h1>
+      </Header>
+      <NewGoal />
+      <CourseGoalList goals={goals} onDelete={handleDeleteGoal} />
+    </main>
+  );
+}
+```
+
+- In `App.tsx`, there are two event handlers:
+  - `handleAddGoal`: Adds a new goal to the state.
+  - `handleDeleteGoal`: Deletes a goal based on its `id`.
+
+- These event handlers are passed down as props to child components.
+
+##### `NewGoal.tsx`:
+
+```tsx
+import { type FormEvent } from 'react';
+
+export default function NewGoal() {
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    // Perform additional logic for form submission
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <p>
+        <label htmlFor="goal">Your goal</label>
+        <input id="goal" type="text" />
+      </p>
+      <p>
+        <label htmlFor="summary">Short summary</label>
+        <input id="summary" type="text" />
+      </p>
+      <p>
+        <button>Add Goal</button>
+      </p>
+    </form>
+  );
+}
+```
+
+- In `NewGoal.tsx`, the `handleSubmit` function is an event handler for the form submission.
+
+- The `FormEvent` type is imported from React to specify the type of the event object in the `handleSubmit` function.
+
+- The `event.preventDefault()` is used to prevent the default form submission behavior.
+
+- This component is a form with two input fields and a button. When the form is submitted, the `handleSubmit` function is called.
+
+### Summary:
+
+- Typing events in React involves specifying the types of event objects in event handler functions.
+
+- TypeScript provides types for different kinds of events, such as `FormEvent` for form submissions.
+
+- By specifying the types of events, TypeScript helps catch potential issues related to event handling and provides better code intelligence in editors.
+
+- In the provided example, the `handleSubmit` function is an event handler for form submission, and the type `FormEvent` ensures that the event object is correctly typed.
+
+***
