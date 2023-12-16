@@ -1,11 +1,13 @@
 import { useState } from 'react';
 
-export default function UserForm() {
+export default function UserForm({addNewUser}) {
     const { name, setName } = useState("");
     const { email, setEmail } = useState("");
 
     const handleSubmit = (e) => {
         e.prevent.default();
+
+        addNewUser({name, email});
     }
     return (
         <form onSubmit={handleSubmit}>
