@@ -758,3 +758,62 @@ export default function NewGoal() {
 - In the provided example, the `handleSubmit` function is an event handler for form submission, and the type `FormEvent` ensures that the event object is correctly typed.
 
 ***
+
+# Working with Generic Event Types
+
+### Working with Generic Event Types in React
+
+In TypeScript, when working with event handlers in React, it's common to use generic event types to provide better type safety and to specify the type of the event target. The `FormEvent` you see in your code is a generic type provided by React that allows you to specify the type of the event target (e.g., `HTMLFormElement`). Let's break down the code and understand how generic event types work:
+
+#### Code Explanation:
+
+```tsx
+import { type FormEvent } from 'react';
+
+export default function NewGoal() {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    // Additional logic for form submission
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <p>
+        <label htmlFor="goal">Your goal</label>
+        <input id="goal" type="text" />
+      </p>
+      <p>
+        <label htmlFor="summary">Short summary</label>
+        <input id="summary" type="text" />
+      </p>
+      <p>
+        <button>Add Goal</button>
+      </p>
+    </form>
+  );
+}
+```
+
+- **Import Statement:** The `FormEvent` type is imported from React. This type is a generic type that allows you to specify the type of the event target.
+
+- **Event Handler Function:** The `handleSubmit` function is an event handler for the form's `onSubmit` event. It takes an event parameter with the type `FormEvent<HTMLFormElement>`. This means that the `event` object is expected to be an event related to a form (`HTMLFormElement`).
+
+- **Preventing Default Action:** Within the `handleSubmit` function, `event.preventDefault()` is called. This prevents the default form submission behavior, which is essential when handling forms in React to control the submission process.
+
+- **JSX:** The component renders a form with two input fields and a button. The `onSubmit` attribute of the form is set to the `handleSubmit` function.
+
+### Generic Event Types Explained:
+
+- **Generic Type (`FormEvent`):** The `FormEvent` type is a generic type in TypeScript that takes a type argument. In this case, the type argument is `HTMLFormElement`. This indicates that the event target (the element the event is triggered on) is expected to be an HTML form.
+
+- **Type Argument (`HTMLFormElement`):** By specifying `HTMLFormElement` as the type argument, TypeScript provides type safety within the event handler. It ensures that properties and methods specific to an HTML form are accessible on the `event` object.
+
+- **Usage in JSX:** When using the `onSubmit` attribute in JSX, the type of the event handler function is specified, ensuring that the correct event type is handled.
+
+### Summary:
+
+- Generic event types, like `FormEvent`, are used to provide type safety when working with events in React.
+
+- They allow you to specify the type of the event target, ensuring that the properties and methods associated with that type are correctly inferred by TypeScript.
+
+- In the provided example, `FormEvent<HTMLFormElement>` is used to handle the form submission event, providing type safety and preventing default form submission behavior.
