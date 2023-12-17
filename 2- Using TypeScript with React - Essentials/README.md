@@ -817,3 +817,75 @@ export default function NewGoal() {
 - They allow you to specify the type of the event target, ensuring that the properties and methods associated with that type are correctly inferred by TypeScript.
 
 - In the provided example, `FormEvent<HTMLFormElement>` is used to handle the form submission event, providing type safety and preventing default form submission behavior.
+
+***
+
+# Using `useRef()` with TypeScript in React
+
+In React, the `useRef()` hook is commonly used to create mutable objects that persist across renders. It is often used to reference and interact with DOM elements. When working with TypeScript, `useRef()` can be used with generics to specify the type of the object being referred to, providing type safety. Let's break down the code:
+
+#### Code Explanation:
+
+```tsx
+import { useRef, type FormEvent } from 'react';
+
+export default function NewGoal() {
+  const goal = useRef<HTMLInputElement>(null);
+  const summary = useRef<HTMLInputElement>(null);
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const enteredGoal = goal.current!.value;
+    const enteredSummary = summary.current!.value;
+
+    // Additional logic with enteredGoal and enteredSummary
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <p>
+        <label htmlFor="goal">Your goal</label>
+        <input id="goal" type="text" ref={goal}/>
+      </p>
+      <p>
+        <label htmlFor="summary">Short summary</label>
+        <input id="summary" type="text" ref={summary}/>
+      </p>
+      <p>
+        <button>Add Goal</button>
+      </p>
+    </form>
+  );
+}
+```
+
+- **Import Statement:** The `useRef` hook and the `FormEvent` type are imported from the 'react' library. The `FormEvent` type is a generic type that can be used to specify the type of the event target.
+
+- **Creating Refs:** Two `useRef` hooks are used to create refs for the `goal` and `summary` input elements. The type parameter `<HTMLInputElement>` is used to specify that these refs will be referencing `HTMLInputElement` elements.
+
+- **Event Handler (`handleSubmit`):** The `handleSubmit` function is an event handler for the form's `onSubmit` event. It takes an event parameter with the type `FormEvent<HTMLFormElement>`, specifying that the event target is expected to be an HTML form.
+
+- **Accessing Ref Values:** Within the `handleSubmit` function, the values of the `goal` and `summary` input fields are accessed using `goal.current!.value` and `summary.current!.value`. The use of `!` is a non-null assertion operator, indicating to TypeScript that it can be certain that `current` is not `null` or `undefined` at this point.
+
+- **JSX and Ref Attachments:** In the JSX, the `ref` attribute is used to attach the `goal` and `summary` refs to the respective input elements.
+
+### Benefits of Using `useRef()` with TypeScript:
+
+1. **Type Safety:** TypeScript allows you to specify the type of the object being referenced by the `useRef` hook. This provides type safety when accessing properties or methods of the referenced object.
+
+2. **Mutability:** `useRef` allows you to create mutable objects that persist across renders without causing re-renders when the referenced object changes.
+
+3. **Interaction with DOM Elements:** `useRef` is commonly used to interact with and manipulate DOM elements directly.
+
+### Summary:
+
+- `useRef` with TypeScript provides type safety and mutability for references to DOM elements.
+
+- Refs created with `useRef` can be attached to React elements, allowing you to interact with them imperatively.
+
+- The `FormEvent` type helps specify the type of the event object for the form submission event.
+
+- Accessing values via refs can be useful when handling form submissions or working with DOM elements directly.
+
+***
