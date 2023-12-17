@@ -1,3 +1,18 @@
+# Table of Contents
+
+1. [Creating a React + TypeScript Project](#creating-a-react--typescript-project)
+2. [Understanding the Role of tsconfig.json](#understanding-the-role-of-tsconfigjson)
+3. [Building a First Component & Facing a Missing Type](#building-a-first-component--facing-a-missing-type)
+4. [Defining Component Props Types](#defining-component-props-types)
+5. [Creating a Header Component](#creating-a-header-component)
+6. [Using useState() and TypeScript](#using-usestate-and-typescript)
+7. [Handling & Typing Events](#handling--typing-events)
+8. [Working with Generic Event Types](#working-with-generic-event-types)
+9. [Using useRef() with TypeScript](#using-useref-with-typescript)
+
+
+***
+
 # Creating a React + TypeScript Project
 
 If you want to create a React + TypeScript project with JSX support using Vite, you can use the following command:
@@ -761,8 +776,6 @@ export default function NewGoal() {
 
 # Working with Generic Event Types
 
-### Working with Generic Event Types in React
-
 In TypeScript, when working with event handlers in React, it's common to use generic event types to provide better type safety and to specify the type of the event target. The `FormEvent` you see in your code is a generic type provided by React that allows you to specify the type of the event target (e.g., `HTMLFormElement`). Let's break down the code and understand how generic event types work:
 
 #### Code Explanation:
@@ -820,7 +833,7 @@ export default function NewGoal() {
 
 ***
 
-# Using `useRef()` with TypeScript in React
+# Using useRef() with TypeScript
 
 In React, the `useRef()` hook is commonly used to create mutable objects that persist across renders. It is often used to reference and interact with DOM elements. When working with TypeScript, `useRef()` can be used with generics to specify the type of the object being referred to, providing type safety. Let's break down the code:
 
@@ -870,7 +883,7 @@ export default function NewGoal() {
 
 - **JSX and Ref Attachments:** In the JSX, the `ref` attribute is used to attach the `goal` and `summary` refs to the respective input elements.
 
-### Benefits of Using `useRef()` with TypeScript:
+### Benefits of Using useRef() with TypeScript:
 
 1. **Type Safety:** TypeScript allows you to specify the type of the object being referenced by the `useRef` hook. This provides type safety when accessing properties or methods of the referenced object.
 
