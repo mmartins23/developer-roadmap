@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Our First Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Running the App:
 
-## Available Scripts
+- **To Run the App (`npm run start`):**
+  - Execute `npm run start` in the terminal.
+  - Starts the development server and launches the application.
+  - Access the app in a web browser at the specified address (e.g., `http://localhost:3000`).
 
-In the project directory, you can run:
+- **To Run Tests (`npm run test`):**
+  - Execute `npm run test` in the terminal.
+  - Runs test suites using Jest.
+  - Provides feedback on test results.
 
-### `npm start`
+### Jest Test Code Explanation:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```jsx
+// Importing necessary testing utilities from '@testing-library/react'
+import { render, screen } from '@testing-library/react';
+// Importing user-event library for simulating user interactions
+import user from '@testing-library/user-event';
+// Importing the component to be tested (UserForm)
+import UserForm from './UserForm';
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+// Jest test case to check if UserForm renders two inputs and a button
+test("It shows two inputs and a button", () => {
+    // Rendering the UserForm component
+    render(<UserForm />);
 
-### `npm test`
+    // Finding all elements with the role 'textbox' and storing them in 'inputs'
+    const inputs = screen.getAllByRole('textbox');
+    // Finding an element with the role 'button' and storing it in 'button'
+    const button = screen.getByRole('button');
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    // Expectation: There should be exactly 2 input elements (textboxes)
+    expect(inputs).toHaveLength(2);
+    // Expectation: The button element should be present in the document
+    expect(button).toBeInTheDocument();
+});
 
-### `npm run build`
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Explanation:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Rendering the Component:**
+   - `render(<UserForm />);`: Renders the `UserForm` component for testing.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Querying Elements:**
+   - `const inputs = screen.getAllByRole('textbox');`: Finds all elements with the role 'textbox' (input elements) and stores them in `inputs`.
+   - `const button = screen.getByRole('button');`: Finds an element with the role 'button' and stores it in `button`.
 
-### `npm run eject`
+3. **Expectations (Assertions):**
+   - `expect(inputs).toHaveLength(2);`: Asserts that there are exactly 2 input elements.
+   - `expect(button).toBeInTheDocument();`: Asserts that the button element is present in the document.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Comments:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- This Jest test checks if the `UserForm` component renders with two input elements and one button.
+- The `screen` utility from `@testing-library/react` is used to query and interact with elements in the rendered component.
+- The `expect` statements verify that the expected number of input elements is present, and the button is in the document.
+- This test ensures that the basic structure of the `UserForm` component is as expected.
