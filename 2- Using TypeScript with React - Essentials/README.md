@@ -4,6 +4,7 @@
 2. [Understanding the Role of tsconfig.json](#understanding-the-role-of-tsconfigjson)
 3. [Building a First Component & Facing a Missing Type](#building-a-first-component--facing-a-missing-type)
 4. [Defining Component Props Types](#defining-component-props-types)
+5. [Storing Props Types as a Custom Type or Interface](#storing-props-types-as-a-custom-type-or-interface)
 5. [Creating a Header Component](#creating-a-header-component)
 6. [Using useState() and TypeScript](#using-usestate-and-typescript)
 7. [Handling & Typing Events](#handling--typing-events)
@@ -902,3 +903,96 @@ export default function NewGoal() {
 - Accessing values via refs can be useful when handling form submissions or working with DOM elements directly.
 
 ***
+
+# Handling User Input in a Type-Safe Way:
+
+The provided code is a React application that demonstrates handling user input in a type-safe way using TypeScript. Let's break down the key aspects:
+
+1. **CourseGoal Type:**
+   
+    ```tsx
+    export type CourseGoal = {
+      title: string;
+      description: string;
+      id: number;
+    }
+    ```
+
+    - Defines a `CourseGoal` type, representing the structure of a course goal.
+    - It includes properties `title` (string), `description` (string), and `id` (number).
+
+2. **App Component:**
+   
+    ```tsx
+    export default function App() {
+      const [goals, setGoals] = useState<CourseGoal[]>([]);
+
+      function handleAddGoal(goal: string, summary: string) {
+        setGoals(prevGoals => {
+          const newGoal: CourseGoal = {
+            id: Math.random(),
+            title: goal,
+            description: summary,
+          };
+          return [...prevGoals, newGoal]
+        });
+      }
+
+      function handleDeleteGoal(id: number) {
+        setGoals(prevGoals => prevGoals.filter(goal => goal.id !== id))
+      }
+    ```
+    - Manages the state of goals using `useState`. `goals` is an array of `CourseGoal`.
+    - Provides two functions `handleAddGoal` and `handleDeleteGoal` to add and delete goals.
+
+3. **NewGoal Component:**
+   
+    ```tsx
+    import { useRef, type FormEvent } from 'react';
+
+    interface NewGoalProps  {
+      onAddGoal: (goal: string, summary: string) => void;
+    }
+
+    export default function NewGoal({onAddGoal}:NewGoalProps ) {
+      const goal = useRef<HTMLInputElement>(null);
+      const summary = useRef<HTMLInputElement>(null);
+
+      function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        const enteredGoal = goal.current!.value;
+        const enteredSummary = summary.current!.value;
+
+        event.currentTarget.reset();
+        onAddGoal(enteredGoal, enteredSummary);
+      }
+    ```
+   
+    - Implements a `NewGoal` component that allows users to input new goals.
+    - Utilizes `useRef` to get references to input elements (`goal` and `summary`).
+    - Defines an `onAddGoal` prop, a callback function to handle adding new goals.
+
+4. **Form Handling in NewGoal Component:**
+   
+    ```tsx
+    <form onSubmit={handleSubmit}>
+      <p>
+        <label htmlFor="goal">Your goal</label>
+        <input id="goal" type="text" ref={goal}/>
+      </p>
+      <p>
+        <label htmlFor="summary">Short summary</label>
+        <input id="summary" type="text" ref={summary}/>
+      </p>
+      <p>
+        <button>Add Goal</button>
+      </p>
+    </form>
+    ```
+
+    - Renders a form with input fields for goal and summary.
+    - Utilizes the `onSubmit` event to trigger the `handleSubmit` function.
+    - Clears the form after submission by resetting the form's values.
+
+In summary, this code illustrates how TypeScript can be used to define a type for the structure of data (in this case, `CourseGoal`). It also demonstrates the type-safe handling of user input in a React application by enforcing the types of input data and using TypeScript interfaces for prop definitions. This approach helps catch potential errors during development and enhances the overall maintainability of the code.
