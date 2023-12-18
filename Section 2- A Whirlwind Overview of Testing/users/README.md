@@ -103,3 +103,52 @@ Key functions provided by the Element Query System include:
 By using these functions, testers can write expressive and resilient tests that closely resemble how users interact with the application. The Element Query System promotes the use of semantic queries based on the role, label, or text content of elements, contributing to more maintainable and robust tests. It helps avoid direct dependencies on the component's implementation details, making tests more resilient to changes in the UI structure.
 
 ***
+
+# Understanding ARIA Roles
+
+Understanding ARIA (Accessible Rich Internet Applications) roles is crucial for building web applications that are accessible to people with disabilities. ARIA roles provide semantic information about the roles of elements in a web page, enabling assistive technologies to convey the content and functionality to users who may have visual or cognitive impairments. Here are some key aspects of understanding ARIA roles:
+
+### 1. **What are ARIA Roles?**
+
+- **Definition:** ARIA roles are a set of attributes that define the purpose and behavior of HTML elements on a webpage.
+  
+- **Accessibility Enhancement:** They are designed to enhance the accessibility of web content by providing additional information to assistive technologies such as screen readers.
+
+### 2. **Common ARIA Roles:**
+
+- **`role` Attribute:** ARIA roles are applied using the `role` attribute in HTML elements. Some common ARIA roles include:
+
+  - **`role="button"`:** Represents a button element.
+  - **`role="link"`:** Represents a hyperlink.
+  - **`role="heading"`:** Represents a heading (e.g., `<h1>`, `<h2>`).
+  - **`role="img"`:** Represents an image.
+
+### 3. **Why Use ARIA Roles?**
+
+- **Semantic Information:** ARIA roles provide semantic information beyond the standard HTML elements, helping assistive technologies understand the purpose of different parts of the page.
+
+- **Interactive Elements:** They are especially useful for making interactive elements, such as custom buttons or navigation components, accessible to users with disabilities.
+
+### 4. **How to Use ARIA Roles:**
+
+- **Adding Roles:** You can add ARIA roles to HTML elements using the `role` attribute. For example:
+
+  ```html
+  <button role="button">Click me</button>
+  ```
+
+- **ARIA States and Properties:** In addition to roles, ARIA includes states and properties to provide more detailed information about the current state of an element.
+
+### 5. **Testing ARIA Roles:**
+
+- **Jest and Testing Library:** When testing React components, tools like Jest and Testing Library can be used to ensure that ARIA roles are correctly applied. This involves querying the DOM for elements based on their ARIA roles and asserting that they meet the expected criteria.
+
+### 6. **ARIA Best Practices:**
+
+- **Use Native Semantics:** Whenever possible, use native HTML elements with built-in semantics (e.g., `<button>`, `<a>`, `<h1>`) rather than relying solely on ARIA roles.
+
+- **Ensure Compatibility:** ARIA roles should be used in a way that complements, not contradicts, the native semantics of HTML elements. This ensures compatibility with a wide range of user agents and assistive technologies.
+
+Understanding and applying ARIA roles contribute to creating a more inclusive web experience. By providing clear and accurate information about the structure and purpose of content, developers can build web applications that are accessible to everyone, regardless of their abilities or disabilities.
+
+***
