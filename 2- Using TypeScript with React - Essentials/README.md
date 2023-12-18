@@ -5,14 +5,22 @@
 3. [Building a First Component & Facing a Missing Type](#building-a-first-component--facing-a-missing-type)
 4. [Defining Component Props Types](#defining-component-props-types)
 5. [Storing Props Types as a Custom Type or Interface](#storing-props-types-as-a-custom-type-or-interface)
-5. [Creating a Header Component](#creating-a-header-component)
-6. [Using useState() and TypeScript](#using-usestate-and-typescript)
-7. [Handling & Typing Events](#handling--typing-events)
-8. [Working with Generic Event Types](#working-with-generic-event-types)
-9. [Using useRef() with TypeScript](#using-useref-with-typescript)
+6. [Defining a Type for Props with "children"](#defining-a-type-for-props-with-children)
+7. [Creating a Header Component](#creating-a-header-component)
+8. [Using useState() and TypeScript](#using-usestate-and-typescript)
+9. [Reusing Types Across Files](#reusing-types-across-files)
+10. [Using useState() and TypeScript](#using-usestate-and-typescript)
+11. [Reusing Types Across Files](#reusing-types-across-files)
+12. [Passing Functions as Values - In A Type-Safe Way](#passing-functions-as-values---in-a-type-safe-way)
+13. [Handling & Typing Events](#handling--typing-events)
+14. [Working with Generic Event Types](#working-with-generic-event-types)
+15. [Using useRef() with TypeScript](#using-useref-with-typescript)
+16. [Handling User Input in a Type-Safe Way](#handling-user-input-in-a-type-safe-way)
+
 
 
 ***
+
 
 # Creating a React + TypeScript Project
 
