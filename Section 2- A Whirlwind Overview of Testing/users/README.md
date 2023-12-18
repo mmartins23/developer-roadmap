@@ -152,3 +152,97 @@ Understanding ARIA (Accessible Rich Internet Applications) roles is crucial for 
 Understanding and applying ARIA roles contribute to creating a more inclusive web experience. By providing clear and accurate information about the structure and purpose of content, developers can build web applications that are accessible to everyone, regardless of their abilities or disabilities.
 
 ***
+
+# Understanding Jest Matchers
+
+Jest matchers are functions provided by the Jest testing framework that are used to assert or verify certain conditions in your tests. Matchers enable you to make specific assertions about the values or behaviors in your code. Here's an overview of common Jest matchers:
+
+### Basic Matchers:
+
+1. **`toBe(expected)`**
+   - Asserts that the received value is strictly equal to the expected value using `===`.
+
+   ```javascript
+   expect(2 + 2).toBe(4);
+   ```
+
+2. **`toEqual(expected)`**
+   - Recursively checks every field of an object or array.
+
+   ```javascript
+   const data = { a: 1, b: 2 };
+   expect(data).toEqual({ a: 1, b: 2 });
+   ```
+
+### Truthiness Matchers:
+
+3. **`toBeTruthy()` / `toBeFalsy()`**
+   - Asserts that a value is truthy or falsy.
+
+   ```javascript
+   const value = 42;
+   expect(value).toBeTruthy();
+   ```
+
+### Numeric Matchers:
+
+4. **`toBeGreaterThan(expected)` / `toBeLessThan(expected)`**
+   - Asserts that a value is greater or less than the expected value.
+
+   ```javascript
+   expect(5).toBeGreaterThan(3);
+   ```
+
+5. **`toBeGreaterThanOrEqual(expected)` / `toBeLessThanOrEqual(expected)`**
+   - Asserts that a value is greater than or equal to / less than or equal to the expected value.
+
+   ```javascript
+   expect(5).toBeGreaterThanOrEqual(5);
+   ```
+
+### String Matchers:
+
+6. **`toMatch(expected)`**
+   - Asserts that a string matches a regular expression or includes a substring.
+
+   ```javascript
+   const message = 'Hello, Jest!';
+   expect(message).toMatch(/Jest/);
+   ```
+
+### Array Matchers:
+
+7. **`toContain(expected)`**
+   - Asserts that an array or iterable contains an expected item.
+
+   ```javascript
+   const numbers = [1, 2, 3];
+   expect(numbers).toContain(2);
+   ```
+
+### Object Matchers:
+
+8. **`toHaveProperty(propertyPath, value)`**
+   - Asserts that an object has a specific property, optionally checking its value.
+
+   ```javascript
+   const person = { name: 'John', age: 30 };
+   expect(person).toHaveProperty('name', 'John');
+   ```
+
+### Exception Matchers:
+
+9. **`toThrow(expected?)`**
+   - Asserts that a function throws an exception. Optionally, you can provide an expected value or a regular expression to match the error message.
+
+   ```javascript
+   const throwError = () => {
+     throw new Error('Something went wrong');
+   };
+
+   expect(throwError).toThrow('Something went wrong');
+   ```
+
+These are just a few examples of Jest matchers. The comprehensive list of Jest matchers can be found in the Jest documentation. Matchers make your tests more expressive and readable by allowing you to write assertions in a natural language style.
+
+***
