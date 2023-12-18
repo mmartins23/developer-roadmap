@@ -1,3 +1,10 @@
+# Table of Contents
+
+1. [Our First Test](#our-first-test)
+2. [Element Query System](#element-query-system)
+3. [Understanding ARIA Roles](#understanding-aria-roles)
+4. [Understanding Jest Matchers](#understanding-jest-matchers)
+
 # Our First Test
 
 ### Running the App:
